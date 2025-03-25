@@ -1,0 +1,8 @@
+import requests
+
+url="https://api.restful-api.dev/objects/6"
+
+#by running the above http call, the data with id=6 will get deleted
+response= requests.delete(url, verify=False)
+
+print(response.status_code)
