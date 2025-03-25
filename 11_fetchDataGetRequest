@@ -1,0 +1,26 @@
+import requests
+import json
+import jsonpath
+
+url="https://api.restful-api.dev/objects"
+response= requests.get(url, verify=False)
+
+json_response= json.loads(response.text)
+
+#to get complete response in json format
+print(json_response)
+
+#fetching only first name using json path
+names= jsonpath.jsonpath(json_response,'$..name')
+print(names[0])
+
+#fetching the color inside data
+col= jsonpath.jsonpath(json_response,'$..data.color')
+print(col)
+print(col[0])
+
+#compare the printed value
+assert col[0]=='Cloudy White'
+#or by using if
+if col[0]=='Cloudy White':
+    print("equal")
