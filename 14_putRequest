@@ -1,0 +1,17 @@
+import requests
+import json
+import jsonpath
+
+url="https://api.restful-api.dev/objects/7"
+
+with open('C:\\Users\\manikavya.mamidi\\PycharmProjects\\pythonProject\\14_1_data.json','r') as file:
+    # save the raw data into json format
+    json_input=file.read()
+    json_response=json.loads(json_input)
+
+
+headers = {'Content-Type': 'application/json'}
+response= requests.put(url,json=json_response,headers=headers,verify=False)
+print(response.status_code)
+
+
