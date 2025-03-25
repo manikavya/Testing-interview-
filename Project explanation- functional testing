@@ -1,0 +1,75 @@
+Functional testing 
+Functional testing of a web UI (User Interface) application focuses on validating that the application behaves as expected based on its functional requirements. This involves checking all the features, buttons, forms, and workflows to ensure they work properly. Here's a breakdown of real-world examples for functional testing in a web UI application:
+1. Login Functionality Testing
+Scenario: Testing the login functionality to ensure that users can access the application correctly.
+	• Test Steps: 
+		1. Valid Login: Enter a valid username and password, and verify that the user is successfully redirected to the dashboard or home page.
+		2. Invalid Login: Enter an invalid username/password, and verify that an error message like "Invalid credentials" appears.
+		3. Empty Login: Try submitting the login form with empty fields and check if the proper validation message (e.g., "Please enter a username and password") appears.
+		4. Password Visibility Toggle: Check the password visibility toggle (if any) to ensure it shows/hides the password as expected.
+Real-World Example: When logging into a banking or social media application (e.g., Facebook or Gmail), you would verify that the correct credentials lead to successful login, and incorrect ones provide proper error messages.
+2. Form Validation Testing
+Scenario: Testing if all form fields are correctly validated and the data is submitted.
+	• Test Steps: 
+		1. Required Fields: Ensure that mandatory fields (e.g., name, email, password) display validation messages if left empty.
+		2. Invalid Data: Enter invalid data in fields, like an incorrectly formatted email (e.g., invalid-email), and verify that the form doesn’t submit and shows a proper error message.
+		3. Submit the Form: Enter valid data in all fields and submit the form, then verify that the data is correctly sent and the user is directed to the next page (e.g., confirmation page).
+		4. Field Limits: Verify that fields with character limits (e.g., phone number, password) enforce those limits.
+Real-World Example: When signing up for a new account (like creating an account on an e-commerce site like Amazon), you check that fields like "Email" or "Password" are validated for correct formats, and the form doesn't submit unless they are filled out correctly.
+3. Navigation Testing
+Scenario: Ensuring that all clickable elements (buttons, links) on the web UI lead to the correct pages or actions.
+	• Test Steps: 
+		1. Navigation Links: Verify that the main navigation menu (Home, About, Services, etc.) redirects to the correct pages.
+		2. Internal Links: Check that all internal links (links to different sections of the same page, like "Back to Top") work as expected.
+		3. External Links: Click on external links (e.g., "Privacy Policy" or "Terms and Conditions") and check if they open in a new tab or the correct location.
+		4. Breadcrumbs: Check if breadcrumb navigation correctly reflects the current page hierarchy.
+		5. Back Button: Ensure that pressing the browser's back button correctly navigates back to the previous page.
+Real-World Example: On a corporate website, you may need to test whether the "About Us" link in the top menu leads to the correct page and whether the "Contact Us" link opens the correct form or email address.
+4. Button Click Functionality
+Scenario: Testing that all buttons perform the expected actions when clicked.
+	• Test Steps: 
+		1. Submit Button: Check that clicking the submit button on a form correctly submits the data.
+		2. Reset Button: Check that clicking the reset button clears all form fields.
+		3. Action Buttons: Test buttons like "Add to Cart" on an e-commerce website to verify that it performs the correct action (e.g., adds an item to the cart).
+		4. UI Feedback: Ensure that after clicking a button, there is appropriate visual feedback (e.g., the button changes color or shows a loading spinner).
+Real-World Example: In an online shopping platform, when you click on the "Add to Cart" button for a product, the system should add the item to the cart and display the updated cart details.
+5. Error Message Display Testing
+Scenario: Ensuring that error messages are displayed correctly when invalid actions are taken.
+	• Test Steps: 
+		1. Invalid Inputs: Enter invalid input, such as an unsupported file type in an upload form, and check if an appropriate error message is displayed.
+		2. Field Errors: Leave required fields blank and verify that a warning message is shown indicating that the field is mandatory.
+		3. Popup Errors: When actions fail (e.g., unable to submit a form or make a payment), check if an error message or popup appears to notify the user.
+Real-World Example: In an online banking system, if you enter incorrect credentials, the system should show an error message like "Incorrect username or password" and prevent you from logging in.
+6. Search Functionality Testing
+Scenario: Verifying that the search feature on the website works correctly.
+	• Test Steps: 
+		1. Valid Search: Enter a valid search term (e.g., a product name) and verify that the search results page shows relevant results.
+		2. Invalid Search: Enter an invalid search term (e.g., a misspelled product name) and check if the website displays a message like "No results found."
+		3. Search Filters: If there are filters (e.g., price range, category), verify that they work correctly to narrow down search results.
+Real-World Example: In an e-commerce website like Amazon, typing a product name (e.g., "smartphone") into the search bar should show relevant product results, and applying filters (e.g., price range, brand) should narrow down the results.
+7. Responsive Design Testing
+Scenario: Testing the UI on different screen sizes and devices to ensure it’s responsive.
+	• Test Steps: 
+		1. Mobile View: Check that the layout adapts to smaller screens (smartphones and tablets). For example, the navigation menu should collapse into a hamburger menu on mobile.
+		2. Tablet View: Ensure that the content is well-aligned and visible without the need for excessive scrolling.
+		3. Desktop View: Verify that the content is displayed properly on larger screens (i.e., no overlapping elements).
+Real-World Example: On a website like Netflix, ensure that the content adjusts well when switching from a desktop browser to a mobile app or tablet.
+8. File Upload and Download Testing
+Scenario: Verifying that file upload and download features work as expected.
+	• Test Steps: 
+		1. Valid File Upload: Upload a valid file (e.g., image, document) and verify that it is successfully uploaded.
+		2. Invalid File Upload: Try uploading an unsupported file type (e.g., .exe file) and check if an error message is shown.
+		3. File Download: Verify that files (e.g., PDFs, images) can be downloaded successfully when clicked.
+Real-World Example: In a job portal, when you apply for a job, you upload your resume as a .pdf file. The system should allow the upload, and an invalid file type (e.g., .exe) should display an error.
+9. Session Management Testing
+Scenario: Verifying session management features like user login and logout.
+	• Test Steps: 
+		1. Session Timeout: Ensure that the user session expires after a set amount of time and the user is logged out automatically.
+		2. Logout Functionality: Test if clicking the logout button properly ends the session and redirects the user to the login page.
+Real-World Example: In an online banking system, if the user stays idle for a long time, the system should log them out for security reasons.
+Conclusion:
+Functional testing in web UI applications is about validating that all aspects of the application are working as expected. This includes testing the navigation, forms, buttons, error messages, UI responsiveness, and session management. By conducting these tests, we ensure that the application provides a seamless and user-friendly experience, and that all functional requirements are met.
+
+From <https://chatgpt.com/> 
+
+
