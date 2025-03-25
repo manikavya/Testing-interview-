@@ -1,0 +1,281 @@
+this is the raw data from https://restful-api.dev/
+
+[
+    {
+        "id": "1",
+        "name": "Google Pixel 6 Pro",
+        "data": {
+            "color": "Cloudy White",
+            "capacity": "128 GB"
+        }
+    },
+    {
+        "id": "2",
+        "name": "Apple iPhone 12 Mini, 256GB, Blue",
+        "data": null
+    },
+    {
+        "id": "3",
+        "name": "Apple iPhone 12 Pro Max",
+        "data": {
+            "color": "Cloudy White",
+            "capacity GB": 512
+        }
+    },
+    {
+        "id": "4",
+        "name": "Apple iPhone 11, 64GB",
+        "data": {
+            "price": 389.99,
+            "color": "Purple"
+        }
+    },
+    {
+        "id": "5",
+        "name": "Samsung Galaxy Z Fold2",
+        "data": {
+            "price": 689.99,
+            "color": "Brown"
+        }
+    },
+    {
+        "id": "6",
+        "name": "Apple AirPods",
+        "data": {
+            "generation": "3rd",
+            "price": 120
+        }
+    },
+    {
+        "id": "7",
+        "name": "Apple MacBook Pro 16",
+        "data": {
+            "year": 2019,
+            "price": 1849.99,
+            "CPU model": "Intel Core i9",
+            "Hard disk size": "1 TB"
+        }
+    },
+    {
+        "id": "8",
+        "name": "Apple Watch Series 8",
+        "data": {
+            "Strap Colour": "Elderberry",
+            "Case Size": "41mm"
+        }
+    },
+    {
+        "id": "9",
+        "name": "Beats Studio3 Wireless",
+        "data": {
+            "Color": "Red",
+            "Description": "High-performance wireless noise cancelling headphones"
+        }
+    },
+    {
+        "id": "10",
+        "name": "Apple iPad Mini 5th Gen",
+        "data": {
+            "Capacity": "64 GB",
+            "Screen size": 7.9
+        }
+    },
+    {
+        "id": "11",
+        "name": "Apple iPad Mini 5th Gen",
+        "data": {
+            "Capacity": "254 GB",
+            "Screen size": 7.9
+        }
+    },
+    {
+        "id": "12",
+        "name": "Apple iPad Air",
+        "data": {
+            "Generation": "4th",
+            "Price": "419.99",
+            "Capacity": "64 GB"
+        }
+    },
+    {
+        "id": "13",
+        "name": "Apple iPad Air",
+        "data": {
+            "Generation": "4th",
+            "Price": "519.99",
+            "Capacity": "256 GB"
+        }
+    }
+]
+
+
+
+Question -1 
+Validate name = Google Pixel 6 Pro
+
+Code:
+pm.test("Validate the text", function() {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData[0].name).to.eql("Google Pixel 6 Pro");
+});
+
+
+Question-2
+Validate color= "Cloudy White"
+
+Code:
+pm.test("Validate the text", function(){
+    var jsonData = pm.response.json();
+    pm.expect(jsonData[0].data.color).to.eql("Cloudy White");
+})
+
+Question -3
+Validate the status code as 200 
+
+Code:
+pm.test("validate status code is 200", function(){
+pm.response.to.have.status(200)
+})
+
+
+
+Question-4
+Print only name and id's 
+Code:
+pm.test("Print only id and name", function() {
+    var jsonData = pm.response.json();
+    
+    // Iterate through each object in the array and log id and name
+    jsonData.forEach(function(item) {
+        console.log("ID: " + item.id + ", Name: " + item.name);
+    });
+});
+
+Output: 
+It will appear in console like all the data of name and id's
+
+
+Question-5
+If we want to add new data using test tab in postman 
+Code:
+// Prepare the new data to be added
+var newData = {
+    "id": "14",
+    "name": "New",
+    "data": {
+        "Strap Colour": "New",
+        "Case Size": "New"
+    }
+};
+
+// Define the POST request options
+var postRequestOptions = {
+    url: 'https://api.restful-api.dev/objects', // API endpoint
+    method: 'POST',
+    header: {
+        'Content-Type': 'application/json' // Content-Type header for sending JSON data
+    },
+    body: {
+        mode: 'raw',
+        raw: JSON.stringify(newData) // Convert the new data to JSON string format
+    }
+};
+
+// Send the POST request with the new data
+pm.sendRequest(postRequestOptions, function (err, res) {
+    // Check for errors
+    if (err) {
+        console.log("Error:", err);
+    } else {
+        console.log("Response from API:", res.json());
+        // Optionally, you can add assertions to check the response status or content
+        pm.test("Check if new data was added successfully", function() {
+            pm.expect(res.status).to.eql(200); // Expect a successful status code
+            pm.expect(res.json()).to.have.property('id', '14'); // Check if the ID matches
+        });
+    }
+});
+
+NOTE: mostly this is not preferable 
+
+Question-6
+POST a new data and check whether it posted correctly
+Code:
+Give the data to be added in the body as json 
+
+{
+    "id": "14",
+    "name": "New",
+    "data": {
+        "Strap Colour": "New",
+        "Case Size": "New"
+    }
+}
+ 
+Testscripts to validate:
+pm.test("new object added", function(){
+    var jsonData= pm.response.json();
+    pm.expect(jsonData).to.have.property("id");
+    pm.expect(jsonData).to.have.property("name","New");
+    pm.expect(jsonData.data).to.have.property('Strap Colour', 'New');
+    pm.expect(jsonData.data).to.have.property("Case Size","New")
+});
+
+pm.test("testing status as 200", function(){
+pm.response.to.have.status(200)
+})
+
+
+Question-7
+PUT a new data and check whether it posted correctly
+Code:
+Give the data to be added in the body as json 
+{
+    "id": "ff808181932badb60194d75972e7524f",
+    "name": "Updated",
+    "createdAt": "2025-02-05T18:22:31.143+00:00",
+    "data": {
+        "Strap Colour": "New",
+        "Case Size": "New"
+    }
+}
+
+Code:
+ pm.test("Validate the updated data", function(){
+ var jsonData= pm.response.json();
+pm.expect(jsonData.name).to.eql("Updated");
+}
+
+
+Question-8 
+Delete the data and check by testscript 
+Code: 
+pm.test("validate the deleted object", function(){
+    var jsonData= pm.response.json();
+    // Ensure that message exists
+    pm.expect(jsonData).to.have.property("message");
+    
+    // Now check if the message contains the expected ID
+    pm.expect(jsonData.message).to.include("ff808181932badb60194d76a599e526b");
+})
+
+
+Question-9
+Test for Missing or Invalid Fields in Responses
+Code:
+pm.test("Validate the response contains all expected fields", function () {
+    var response = pm.response.json();
+    pm.expect(response).to.have.property('id');
+    pm.expect(response).to.have.property('name');
+    pm.expect(response.data).to.be.an('object');
+    pm.expect(response.data).to.have.property('Strap Colour');
+    pm.expect(response.data).to.have.property('Case Size');
+});
+
+
+
+
+
+
+
+
