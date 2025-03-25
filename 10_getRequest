@@ -1,0 +1,16 @@
+import requests
+url="https://api.restful-api.dev/objects"
+response= requests.get(url,verify=False)
+print(response)
+print("status code")
+print(response.status_code)
+print("response.content")
+print(response.content)
+print("response.headers")
+print(response.headers)
+print("response.cookies")
+print(response.cookies)
+print("response.encoding")
+print(response.encoding)
+print("response.elapsed")
+print(response.elapsed)
