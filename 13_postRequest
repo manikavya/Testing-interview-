@@ -1,0 +1,22 @@
+import requests
+import json
+import jsonpath
+
+url="https://api.restful-api.dev/objects"
+
+#add the data in the notepad and save it as .json which you want to post in the api
+with open('C:\\Users\\manikavya.mamidi\\PycharmProjects\\pythonProject\\13_1_data.json','r') as file:
+
+    #save the raw data into json format
+    json_input=file.read()
+    request_json= json.loads(json_input)
+
+#hit post url
+headers = {'Content-Type': 'application/json'}
+response= requests.post(url,json=request_json,headers=headers, verify=False)
+print(response.status_code)
+
+#fetch the data like name, for that first make into json format
+response_json= json.loads(response.text)
+name= jsonpath.jsonpath(response_json,'$..name')
+print(name)
