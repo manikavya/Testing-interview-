@@ -1,0 +1,14 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+#ser_obj = Service("/Driver/chromedriver.exe")
+ser_obj = Service("C:/Users/manikavya.mamidi/PycharmProjects/pythonProject/Driver/chromedriver.exe")
+driver = webdriver.Chrome(service = ser_obj)
+driver.get("https://www.w3schools.com/")
+driver.maximize_window()
+box = driver.find_element(By.XPATH, "//*[@id='tnb-google-search-input']")
+box.send_keys("html")
+box.send_keys(Keys.RETURN)
+time.sleep(3)
