@@ -1,0 +1,12 @@
+import requests
+import time
+url="https://api.restful-api.dev/objects"
+
+startTime= time.time()
+
+response = requests.get(url, verify=False)
+
+endTime= time.time()
+
+responseTime= endTime - startTime
+print(responseTime)
