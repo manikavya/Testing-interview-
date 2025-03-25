@@ -1,0 +1,27 @@
+
+Explain how you would integrate test automation with a CI/CD pipeline.
+Answer: Test automation can be integrated into a CI/CD pipeline using tools like Jenkins, GitLab CI, or CircleCI. The general process is as follows:
+	1. Version Control: Store test scripts in version control systems like Git.
+	2. Trigger on Code Changes: Whenever code is committed or a pull request is made, the pipeline triggers the test execution automatically.
+	3. Execute Tests: The pipeline runs the automation tests (e.g., using pytest or unittest) on the CI server.
+	4. Reporting: After execution, the test results (e.g., via Allure or JUnit reports) are shown, and if tests fail, the pipeline can be configured to halt further steps.
+	5. Notifications: Integrate with Slack or email to notify the team of test results.
+
+
+Selenium: A widely-used browser automation tool that works with different browsers (Chrome, Firefox, Edge). It requires browser drivers (e.g., ChromeDriver) and is sometimes slower due to its reliance on external drivers and its architecture.
+
+Playwright: A more recent tool that supports automation across multiple browsers (Chrome, Firefox, and WebKit). It is faster than Selenium, supports headless mode out of the box, and provides a more modern API. Playwright also has better support for handling modern web features like single-page applications (SPAs).
+
+Methods of ActionChains:
+	• click(): Click on an element.
+	• context_click(): Right-click (context click).
+	• double_click(): Double-click on an element.
+	• click_and_hold(): Hold down the mouse button on an element.
+	• release(): Release the mouse after click_and_hold().
+	• move_to_element(): Move the mouse to the middle of an element.
+	• drag_and_drop(): Drag one element and drop it on another.
+	• key_down() & key_up(): Simulate pressing and releasing a key (useful for keyboard shortcuts).
+	• send_keys(): Type text into an input field.
+	• pause(): Introduce a pause between actions.
+	• perform(): Execute the queued actions.
+
