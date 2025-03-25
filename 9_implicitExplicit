@@ -1,0 +1,5 @@
+##implicit wait is used when we launch a website it may take 5secs to load , if we keep time.sleep(10). as the
+#website launches in 5 secs , remaining 5 seconds will get wasted , so instead wasting of extra tym we use implicit
+
+
+##explicit is used only one command to be workable
