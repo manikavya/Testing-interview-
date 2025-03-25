@@ -1,0 +1,15 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+import time
+
+ser_obj = Service("C:/Users/manikavya.mamidi/PycharmProjects/pythonProject/Driver/chromedriver.exe")
+driver = webdriver.Chrome(service = ser_obj)
+driver.get("https://www.w3schools.com/")
+driver.maximize_window()
+dropdown= driver.find_element(By.XPATH, '//*[@id="navbtn_certified"]')
+dropdown.click()
+time.sleep(3)
+dropdown_click= driver.find_element(By.XPATH,'/html/body/div[2]/div[2]/div/nav[3]/div[1]/div/div[2]/div[1]/div[1]/a[2]')
+dropdown_click.click()
+time.sleep(3)
