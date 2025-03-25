@@ -1,0 +1,95 @@
+
+
+
+
+BDD 
+Step 2: Define Acceptance Criteria using BDD Syntax
+In BDD, we write acceptance criteria using Given-When-Then syntax. The criteria should specify what needs to happen when the system behaves in a certain way.
+Here’s the Given-When-Then format for the login feature:
+	• Given: The initial setup or precondition.
+	• When: The action the user takes.
+	• Then: The expected result after the action.
+
+Gherkin:
+Feature: User login functionality
+
+  Scenario: Successful login with valid credentials
+    Given the user is on the login page
+    When the user enters a valid username and password
+    Then the user should be redirected to their dashboard
+    And the login success message should be displayed
+
+  Scenario: Unsuccessful login with invalid credentials
+    Given the user is on the login page
+    When the user enters an invalid username or password
+    Then an error message should be displayed
+
+CODE: 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+
+public class LoginSteps {
+    WebDriver driver = new ChromeDriver();
+    
+    @Given("the user is on the login page")
+    public void theUserIsOnLoginPage() {
+        driver.get("http://example.com/login");  // Navigate to the login page
+    }
+    
+    @When("the user enters a valid username and password")
+    public void theUserEntersValidCredentials() {
+        driver.findElement(By.id("username")).sendKeys("validUser");
+        driver.findElement(By.id("password")).sendKeys("validPassword");
+        driver.findElement(By.id("loginButton")).click();  // Click on the login button
+    }
+    
+    @Then("the user should be redirected to their dashboard")
+    public void theUserShouldBeRedirected() {
+        String currentUrl = driver.getCurrentUrl();
+        assert currentUrl.equals("http://example.com/dashboard");  // Validate redirection to dashboard
+    }
+
+    @Then("the login success message should be displayed")
+    public void theLoginSuccessMessageShouldBeDisplayed() {
+        String successMessage = driver.findElement(By.id("successMessage")).getText();
+        assert successMessage.equals("Welcome to your dashboard!");
+    }
+    
+    @When("the user enters an invalid username or password")
+    public void theUserEntersInvalidCredentials() {
+        driver.findElement(By.id("username")).sendKeys("invalidUser");
+        driver.findElement(By.id("password")).sendKeys("invalidPassword");
+        driver.findElement(By.id("loginButton")).click();  // Click on the login button
+    }
+    
+    @Then("an error message should be displayed")
+    public void anErrorMessageShouldBeDisplayed() {
+        String errorMessage = driver.findElement(By.id("errorMessage")).getText();
+        assert errorMessage.equals("Invalid username or password.");
+    }
+}
+
+
+--------------------------------------------------------------------------------------------
+BDD vs TDD 
+• TDD is more developer-centric and focuses on writing unit tests to verify the correctness of the code from the very beginning.
+• BDD is more collaborative and business-oriented, allowing non-developers (like business analysts and QA) to write and understand the test cases. BDD emphasizes user behavior, using natural language (like Gherkin) to describe expected system behavior.
+
+----------------------------------------------------------------
+Xpath vs CSS selector 
+XPath vs CSS Selectors Comparison
+Feature	XPath	CSS Selectors
+Syntax	//tagname[@attribute='value']	tagname[attribute='value']
+Performance	Slower (especially for complex XPath)	Faster in general
+Navigational Ability	Can navigate upwards to parent elements, traverse sibling elements, etc.	Cannot navigate upwards or to sibling elements
+Readability	More verbose and complex	Shorter and simpler
+Matching Text	Supports full text matches and partial text matches	Cannot directly match text (can only match elements based on attributes)
+Use Cases	Useful when structure is complex or requires searching by text	Suitable for simpler, faster selections
+----------------------------------------------------------------------------------------------------
+
+
+
