@@ -1,0 +1,21 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+# Specify the path to your WebDriver (e.g., ChromeDriver)
+ser_obj = Service("C:/Users/manikavya.mamidi/PycharmProjects/pythonProject/Driver/chromedriver.exe")
+driver = webdriver.Chrome(service = ser_obj)
+
+# Open a webpage
+driver.get("https://www.google.com")
+
+# Find the search input element by name and search for something
+search_box = driver.find_element(By.NAME, "q")
+search_box.send_keys("Selenium with PyCharm")
+search_box.send_keys(Keys.RETURN)
+
+# Wait for a few seconds to see the result (optional)
+driver.implicitly_wait(5)
+
+# Close the browser window
+driver.quit()
