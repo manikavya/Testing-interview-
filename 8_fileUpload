@@ -1,0 +1,17 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+import time
+
+ser_obj = Service("C:/Users/manikavya.mamidi/PycharmProjects/pythonProject/Driver/chromedriver.exe")
+driver = webdriver.Chrome(service = ser_obj)
+driver.get("https://practice.expandtesting.com/upload")
+driver.maximize_window()
+
+driver.execute_script('window.scroll(0,600)')
+upload= driver.find_element(By.XPATH,'//*[@id="fileInput"]')
+filepath=r'C:\Users\manikavya.mamidi\Downloads\kavya.txt'
+upload.send_keys(filepath)
+submit=driver.find_element(By.XPATH,'//*[@id="fileSubmit"]')
+submit.click()
+time.sleep(3)
