@@ -1,0 +1,66 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+ser_obj = Service("C:/Users/manikavya.mamidi/PycharmProjects/pythonProject/Driver/chromedriver.exe")
+driver = webdriver.Chrome(service = ser_obj)
+driver.get("https://genieexports-international.myshopify.com/")
+
+driver.maximize_window()
+print("page title: ",driver.title)
+
+# click dropdown to open it
+dropdown = WebDriverWait(driver, 10).until(
+    EC.element_to_be_clickable((By.XPATH, "//div[@class='cvc-switcher-btn__content']"))
+
+)
+dropdown.click()
+time.sleep(3)
+
+# options to be visible and click the United States option
+option = WebDriverWait(driver, 3).until(
+   # EC.element_to_be_clickable((By.XPATH, "//span[text()='United States']"))
+EC.element_to_be_clickable((By.XPATH, "//div[@class='cvc-list-item ']" ))
+
+)
+option.click()
+time.sleep(3)
+
+#click on catalog
+catalog_link = WebDriverWait(driver, 3).until(
+    EC.element_to_be_clickable((By.LINK_TEXT, "Catalog"))
+)
+catalog_link.click()
+time.sleep(3)
+
+#click on availability
+dropdown = WebDriverWait(driver, 3).until(
+    EC.element_to_be_clickable((By.XPATH, "//span[@class='facets__summary-label']"))
+)
+dropdown.click()
+time.sleep(3)
+
+# Click on the "In Stock" checkbox
+checkbox = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//input[@id='Filter-filter.v.availability-1']"))
+)
+driver.execute_script("arguments[0].click();", checkbox)
+time.sleep(3)
+
+#click on products link
+first_product = WebDriverWait(driver, 5).until(
+    EC.presence_of_element_located((By.XPATH, "(//a[contains(@href, '/products/')])[1]"))
+)
+
+# Scroll little and click the first product link
+driver.execute_script("arguments[0].scrollIntoView(true);", first_product)
+driver.execute_script("arguments[0].click();", first_product)
+
+time.sleep(10)
+
+driver.quit()
+
+
+
